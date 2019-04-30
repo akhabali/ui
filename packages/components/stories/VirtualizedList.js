@@ -8,6 +8,7 @@ import VirtualizedList, { listTypes } from '../src/VirtualizedList';
 import CellTitle from '../src/VirtualizedList/CellTitle';
 import CellBadge from '../src/VirtualizedList/CellBadge';
 import MyCustomRow from './List/MyCustomRow.component';
+import Hello from './test';
 
 function NoRowsRenderer() {
 	return (
@@ -384,7 +385,6 @@ const sourceItems = [...new Array(50)].map(
 	(item, index) => collapsibleListCollection[index % collapsibleListCollection.length],
 );
 
-
 function CollapsiblePanels(props) {
 	const [collection, setCollection] = React.useState(props.sourceItems);
 	return (
@@ -433,31 +433,7 @@ storiesOf('VirtualizedList', module)
 			</p>
 			<IconsProvider defaultIcons={icons} />
 			<section style={{ height: '50vh' }}>
-				<VirtualizedList collection={collection} id={'my-list'}>
-					<VirtualizedList.Content label="Id" dataKey="id" width={-1} />
-					<VirtualizedList.Content
-						label="Name"
-						dataKey="name"
-						columnData={titleProps}
-						width={-1}
-						{...CellTitle}
-					/>
-					<VirtualizedList.Content
-						label="Tag"
-						dataKey="tag"
-						columnData={{ selected: true }}
-						width={-1}
-						{...CellBadge}
-					/>
-					<VirtualizedList.Content
-						label="Description (non sortable)"
-						dataKey="description"
-						width={-1}
-					/>
-					<VirtualizedList.Content label="Author" dataKey="author" width={-1} />
-					<VirtualizedList.Content label="Created" dataKey="created" width={-1} />
-					<VirtualizedList.Content label="Modified" dataKey="modified" width={-1} />
-				</VirtualizedList>
+				<Hello collection={collection} titleProps={titleProps} />
 			</section>
 		</div>
 	))
@@ -503,7 +479,8 @@ storiesOf('VirtualizedList', module)
 			<h1>Virtualized List</h1>
 			<p>
 				Selection can be enabled by passing <b>selectionToggle</b> callback and <b>isSelected</b>{' '}
-				function that returns if a row is selected.<br />
+				function that returns if a row is selected.
+				<br />
 				Here <pre>{'isSelected={item => item.id === 6}'}</pre>
 			</p>
 			<IconsProvider defaultIcons={icons} />
@@ -541,7 +518,8 @@ storiesOf('VirtualizedList', module)
 			<h1>Virtualized List</h1>
 			<p>
 				Row click can be enabled by passing <b>onRowClick</b> callback and <b>isActive</b> function
-				that returns if a row is active.<br />
+				that returns if a row is active.
+				<br />
 				Here example <pre>{'isActive={item => item.id === 6}'}</pre>
 			</p>
 			<IconsProvider defaultIcons={icons} />
@@ -576,10 +554,12 @@ storiesOf('VirtualizedList', module)
 		<div>
 			<h1>Virtualized List</h1>
 			<p>
-				On Large rendering, the title is automatically placed at the top.<br />
-				The rest of the fields are displayed on the <b>VirtualizedList.Content</b> order.<br />
-				The row height is by default <b>135px</b> but can be customized by passing a
-				<b>rowHeight</b> props.
+				On Large rendering, the title is automatically placed at the top.
+				<br />
+				The rest of the fields are displayed on the <b>VirtualizedList.Content</b> order.
+				<br />
+				The row height is by default <b>135px</b> but can be customized by passing a<b>rowHeight</b>{' '}
+				props.
 			</p>
 			<IconsProvider defaultIcons={icons} />
 			<section style={{ height: '50vh' }}>
@@ -610,7 +590,8 @@ storiesOf('VirtualizedList', module)
 			<h1>Virtualized List</h1>
 			<p>
 				Selection can be enabled by passing <b>selectionToggle</b> callback and <b>isSelected</b>{' '}
-				function that returns if a row is selected.<br />
+				function that returns if a row is selected.
+				<br />
 				Here <pre>{'isSelected={item => item.id === 6}'}</pre>
 			</p>
 			<IconsProvider defaultIcons={icons} />
@@ -645,7 +626,8 @@ storiesOf('VirtualizedList', module)
 			<h1>Virtualized List</h1>
 			<p>
 				Row click can be enabled by passing <b>onRowClick</b> callback and <b>isActive</b> function
-				that returns if a row is active.<br />
+				that returns if a row is active.
+				<br />
 				Here example <pre>{'isActive={item => item.id === 6}'}</pre>
 			</p>
 			<IconsProvider defaultIcons={icons} />
@@ -674,7 +656,7 @@ storiesOf('VirtualizedList', module)
 			</section>
 		</div>
 	))
-	.add('List > CollapsiblePanels', () => (<CollapsiblePanels sourceItems={sourceItems} />))
+	.add('List > CollapsiblePanels', () => <CollapsiblePanels sourceItems={sourceItems} />)
 	.add('List > Table without header', () => (
 		<div className="virtualized-list">
 			<h1>Virtualized List</h1>
@@ -722,7 +704,8 @@ storiesOf('VirtualizedList', module)
 			<h1>Virtualized List</h1>
 			<p>
 				Tooltip label on list item icon can be enabled by passing
-				<b>iconKey, iconLabelKey</b> in titleProps,<br />
+				<b>iconKey, iconLabelKey</b> in titleProps,
+				<br />
 				also the icon name and tooltip label should be provided in list item rowData (in{' '}
 				<b>collection</b> items)
 			</p>
